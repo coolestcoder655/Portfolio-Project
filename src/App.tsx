@@ -541,9 +541,8 @@ const App = () => {
                 <h4 className="mb-3 text-lg font-bold text-orange-400">
                   Striker Competition
                 </h4>
-                <p className={`${textClasses} text-sm`}>
-                  Modeled an operationg room for a Striker Competition
-                </p>
+                <p className={`${textClasses}`}>
+                Engineered a realistic operating room prototype showcased at the Stryker Competition, demonstrating advanced surgical workflow design and innovation.</p>
               </div>
             </div>
           </div>
