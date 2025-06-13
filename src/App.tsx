@@ -13,8 +13,8 @@ import {
 } from "lucide-react";
 
 const App = () => {
-  const [activeSection, setActiveSection] = useState("hero");
-  const [isVisible, setIsVisible] = useState({});
+  const [_, setActiveSection] = useState("hero");
+  const [_, setIsVisible] = useState({});
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
