@@ -619,15 +619,13 @@ const App = () => {
 
           <div className="grid gap-8 md:grid-cols-2">
             <div
-              className={`${
+              className={`$${
                 isDarkMode
-                  ? "bg-gradient-to-br from-blue-900/20 to-cyan-900/20"
-                  : "bg-gradient-to-br from-blue-100/40 to-cyan-100/40"
-              } backdrop-blur-lg rounded-xl p-8 border ${
-                isDarkMode ? "border-blue-400/30" : "border-blue-300/50"
-              }`}
+                  ? "bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border-blue-900"
+                  : "bg-gradient-to-br from-blue-100/40 to-cyan-100/40 border-blue-200"
+              } backdrop-blur-lg rounded-xl p-8 border-2 transition-all duration-300 transform hover:scale-105 hover:border-blue-400/70 hover:shadow-lg`}
             >
-              <div className="mb-4 text-4xl">🏊‍♂️</div>
+              <div className="mb-4 text-4xl group-hover:animate-bounce">🏊‍♂️</div>
               <h3 className="mb-4 text-2xl font-bold text-blue-400">
                 Swimming Competitions
               </h3>
@@ -638,15 +636,13 @@ const App = () => {
             </div>
 
             <div
-              className={`${
+              className={`$${
                 isDarkMode
-                  ? "bg-gradient-to-br from-green-900/20 to-emerald-900/20"
-                  : "bg-gradient-to-br from-green-100/40 to-emerald-100/40"
-              } backdrop-blur-lg rounded-xl p-8 border ${
-                isDarkMode ? "border-green-400/30" : "border-green-300/50"
-              }`}
+                  ? "bg-gradient-to-br from-green-900/20 to-emerald-900/20 border-green-900"
+                  : "bg-gradient-to-br from-green-100/40 to-emerald-100/40 border-green-200"
+              } backdrop-blur-lg rounded-xl p-8 border-2 transition-all duration-300 transform hover:scale-105 hover:border-green-400/70 hover:shadow-lg`}
             >
-              <div className="mb-4 text-4xl">🏸</div>
+              <div className="mb-4 text-4xl group-hover:animate-bounce">🏸</div>
               <h3 className="mb-4 text-2xl font-bold text-green-400">
                 Badminton Competitions
               </h3>
@@ -677,9 +673,9 @@ const App = () => {
 
           <div className="grid gap-8 md:grid-cols-2">
             <div
-              className={`${cardClasses} rounded-xl p-8 border border-white/10`}
+              className={`${cardClasses} rounded-xl p-8 border border-white/10 transition-all duration-300 transform hover:scale-105 hover:border-orange-400/70 hover:shadow-lg`}
             >
-              <Rocket className="mb-4 text-orange-400" size={40} />
+              <Rocket className="mb-4 text-orange-400 group-hover:animate-bounce" size={40} />
               <h3 className="mb-4 text-2xl font-bold text-orange-400">
                 Entrepreneurial Spirit
               </h3>
@@ -691,9 +687,9 @@ const App = () => {
             </div>
 
             <div
-              className={`${cardClasses} rounded-xl p-8 border border-white/10`}
+              className={`${cardClasses} rounded-xl p-8 border border-white/10 transition-all duration-300 transform hover:scale-105 hover:border-red-400/70 hover:shadow-lg`}
             >
-              <Zap className="mb-4 text-red-400" size={40} />
+              <Zap className="mb-4 text-red-400 group-hover:animate-pulse" size={40} />
               <h3 className="mb-4 text-2xl font-bold text-red-400">
                 Growth Mindset
               </h3>
