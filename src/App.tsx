@@ -11,7 +11,6 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-import ReviewsSection from "./ReviewsSection";
 
 const App = () => {
   const [, setActiveSection] = useState("hero");
@@ -705,7 +704,6 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <ReviewsSection cardClasses={cardClasses} textClasses={textClasses} isDarkMode={isDarkMode} />
       <footer
         className={`py-12 ${
           isDarkMode ? "bg-black/40" : "bg-gray-900/10"
