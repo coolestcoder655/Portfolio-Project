@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ReviewsSection from "./ReviewsSection";
 import {
   ChevronDown,
   Trophy,
@@ -542,7 +543,10 @@ const App = () => {
                   Striker Competition
                 </h4>
                 <p className={`${textClasses}`}>
-                Engineered a realistic operating room prototype showcased at the Stryker Competition, demonstrating advanced surgical workflow design and innovation.</p>
+                  Engineered a realistic operating room prototype showcased at
+                  the Stryker Competition, demonstrating advanced surgical
+                  workflow design and innovation.
+                </p>
               </div>
             </div>
           </div>
@@ -675,7 +679,10 @@ const App = () => {
             <div
               className={`${cardClasses} rounded-xl p-8 border border-white/10 transition-all duration-300 transform hover:scale-105 hover:border-orange-400/70 hover:shadow-lg`}
             >
-              <Rocket className="mb-4 text-orange-400 group-hover:animate-bounce" size={40} />
+              <Rocket
+                className="mb-4 text-orange-400 group-hover:animate-bounce"
+                size={40}
+              />
               <h3 className="mb-4 text-2xl font-bold text-orange-400">
                 Entrepreneurial Spirit
               </h3>
@@ -689,7 +696,10 @@ const App = () => {
             <div
               className={`${cardClasses} rounded-xl p-8 border border-white/10 transition-all duration-300 transform hover:scale-105 hover:border-red-400/70 hover:shadow-lg`}
             >
-              <Zap className="mb-4 text-red-400 group-hover:animate-pulse" size={40} />
+              <Zap
+                className="mb-4 text-red-400 group-hover:animate-pulse"
+                size={40}
+              />
               <h3 className="mb-4 text-2xl font-bold text-red-400">
                 Growth Mindset
               </h3>
@@ -702,6 +712,13 @@ const App = () => {
           </div>
         </div>
       </section>
+
+      {/* Reviews Section */}
+      <ReviewsSection
+        cardClasses={cardClasses}
+        textClasses={textClasses}
+        isDarkMode={isDarkMode}
+      />
 
       {/* Footer */}
       <footer
