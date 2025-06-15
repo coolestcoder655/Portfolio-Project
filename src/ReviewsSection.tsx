@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchReviews, addReview } from "./reviewsApi";
 import type { Review } from "./reviewsApi";
+import { Star } from "lucide-react";
 
 const ReviewsSection = ({
   cardClasses,
@@ -14,6 +15,8 @@ const ReviewsSection = ({
   const [reviews, setReviews] = useState<Review[]>([]);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [rating, setRating] = useState(5);
+  const [hoverRating, setHoverRating] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -28,10 +31,11 @@ const ReviewsSection = ({
     setError("");
     setSuccess("");
     try {
-      await addReview({ name, message });
+      await addReview({ name, message, rating });
       setSuccess("Review submitted!");
       setName("");
       setMessage("");
+      setRating(5);
       setReviews(await fetchReviews());
       // Close modal immediately after successful submission
       setIsModalOpen(false);
@@ -89,11 +93,9 @@ const ReviewsSection = ({
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               </button>
-
               <h3 className="text-xl font-bold mb-4 text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text">
                 Share Your Review
-              </h3>
-
+              </h3>{" "}
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <input
                   className={`p-3 rounded border focus:outline-none ${
@@ -106,6 +108,34 @@ const ReviewsSection = ({
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
+                <div className="mb-2">
+                  <label className="block text-sm mb-1">Your Rating</label>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setRating(star)}
+                        onMouseEnter={() => setHoverRating(star)}
+                        onMouseLeave={() => setHoverRating(0)}
+                        className="transition-transform hover:scale-110"
+                      >
+                        <Star
+                          size={24}
+                          fill={
+                            (hoverRating || rating) >= star ? "#38BDF8" : "none"
+                          }
+                          color={
+                            (hoverRating || rating) >= star
+                              ? "#38BDF8"
+                              : "#9CA3AF"
+                          }
+                          className="transition-colors duration-200"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <textarea
                   className={`p-3 rounded border focus:outline-none ${
                     isDarkMode
@@ -145,13 +175,26 @@ const ReviewsSection = ({
               key={review.id}
               className={`p-5 rounded-xl border ${cardClasses}`}
             >
-              <div className="flex items-center mb-2">
-                <span className="font-semibold mr-2 text-cyan-400">
-                  {review.name}
-                </span>
-                <span className="text-xs text-gray-400">
-                  {review.createdAt?.toDate?.().toLocaleString?.() || ""}
-                </span>
+              {" "}
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <span className="font-semibold mr-2 text-cyan-400">
+                    {review.name}
+                  </span>
+                  <span className="text-xs text-gray-400">
+                    {review.createdAt?.toDate?.().toLocaleString?.() || ""}
+                  </span>
+                </div>
+                <div className="flex">
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Star
+                      key={i}
+                      size={16}
+                      fill={i < (review.rating || 5) ? "#38BDF8" : "none"}
+                      color={i < (review.rating || 5) ? "#38BDF8" : "#9CA3AF"}
+                    />
+                  ))}
+                </div>
               </div>
               <p className={textClasses}>{review.message}</p>
             </div>
