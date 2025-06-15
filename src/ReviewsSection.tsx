@@ -62,7 +62,7 @@ const ReviewsSection = ({
         <div className="flex justify-center mb-8">
           <button
             onClick={openModal}
-            className="px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-semibold shadow-lg hover:from-purple-400 hover:to-cyan-400 transition-colors transform hover:scale-105 duration-200"
+            className="px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-semibold shadow-lg hover:from-purple-400 hover:to-cyan-400 transition-colors transform hover:scale-105 duration-500"
           >
             Add Your Review
           </button>
@@ -150,7 +150,7 @@ const ReviewsSection = ({
                 />
                 <button
                   type="submit"
-                  className="px-6 py-2 rounded bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-semibold shadow-md hover:from-purple-400 hover:to-cyan-400 transition-colors"
+                  className="px-6 py-2 rounded bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-semibold shadow-md hover:from-purple-400 hover:to-cyan-400 transition-colors duration-500"
                   disabled={loading}
                 >
                   {loading ? "Submitting..." : "Submit Review"}
@@ -173,9 +173,8 @@ const ReviewsSection = ({
           {reviews.map((review) => (
             <div
               key={review.id}
-              className={`p-5 rounded-xl border ${cardClasses}`}
+              className={`p-5 rounded-xl border ${cardClasses} transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:border-cyan-400/70`}
             >
-              {" "}
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center">
                   <span className="font-semibold mr-2 text-cyan-400">

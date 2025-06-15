@@ -161,24 +161,29 @@ const App = () => {
       >
         <div className="px-6 py-4 mx-auto max-w-7xl">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text animate-pulse" />
+            <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text animate-pulse" />{" "}
             <div className="flex items-center space-x-6">
               <div className="hidden space-x-8 md:flex">
-                {["About", "Academic", "Tech", "Leadership", "Athletics"].map(
-                  (item) => (
-                    <button
-                      key={item}
-                      onClick={() => scrollToSection(item.toLowerCase())}
-                      className={`transition-all duration-300 transform hover:scale-110 ${
-                        isDarkMode
-                          ? "hover:text-cyan-400"
-                          : "hover:text-purple-600 text-gray-800 font-medium"
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  )
-                )}
+                {[
+                  "About",
+                  "Academic",
+                  "Tech",
+                  "Leadership",
+                  "Athletics",
+                  "Reviews",
+                ].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    className={`transition-all duration-300 transform hover:scale-110 ${
+                      isDarkMode
+                        ? "hover:text-cyan-400"
+                        : "hover:text-purple-600 text-gray-800 font-medium"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
               </div>
               <button
                 onClick={toggleDarkMode}
@@ -446,6 +451,7 @@ const App = () => {
           </div>
 
           <div className="space-y-8">
+            {" "}
             <div
               className={`${
                 isDarkMode
@@ -453,7 +459,7 @@ const App = () => {
                   : "bg-gradient-to-r from-cyan-100/40 to-blue-100/40"
               } backdrop-blur-lg rounded-xl p-8 border ${
                 isDarkMode ? "border-cyan-400/30" : "border-cyan-300/50"
-              }`}
+              } transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:border-cyan-400/70`}
             >
               <div className="flex items-center mb-4">
                 <Code className="mr-3 text-cyan-400" size={30} />
@@ -481,8 +487,7 @@ const App = () => {
                   )
                 )}
               </div>
-            </div>
-
+            </div>{" "}
             <div
               className={`${
                 isDarkMode
@@ -490,7 +495,7 @@ const App = () => {
                   : "bg-gradient-to-r from-purple-100/40 to-pink-100/40"
               } backdrop-blur-lg rounded-xl p-8 border ${
                 isDarkMode ? "border-purple-400/30" : "border-purple-300/50"
-              }`}
+              } transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:border-purple-400/70`}
             >
               <div className="flex items-center mb-4">
                 <Trophy className="mr-3 text-purple-400" size={30} />
@@ -507,10 +512,10 @@ const App = () => {
                 capabilities—demonstrating versatility and innovation.
               </p>
             </div>
-
             <div className="grid gap-6 md:grid-cols-2">
+              {" "}
               <div
-                className={`${cardClasses} rounded-xl p-6 border border-white/10`}
+                className={`${cardClasses} rounded-xl p-6 border border-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:border-green-400/70`}
               >
                 <h4 className="mb-3 text-lg font-bold text-green-400">
                   Programming Skills
@@ -528,16 +533,15 @@ const App = () => {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 text-sm text-green-400 rounded-full bg-green-400/20"
+                      className="px-3 py-1 text-sm text-green-400 rounded-full bg-green-400/20 transition-all duration-300 hover:bg-green-400/40 hover:scale-105 inline-block"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
-
+              </div>{" "}
               <div
-                className={`${cardClasses} rounded-xl p-6 border border-white/10`}
+                className={`${cardClasses} rounded-xl p-6 border border-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:border-orange-400/70`}
               >
                 <h4 className="mb-3 text-lg font-bold text-orange-400">
                   Striker Competition
