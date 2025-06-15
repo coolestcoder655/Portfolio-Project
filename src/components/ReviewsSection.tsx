@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchReviews, addReview } from "./reviewsApi";
-import type { Review } from "./reviewsApi";
+import { fetchReviews, addReview } from "../reviewsApi";
+import type { Review } from "../reviewsApi";
 import { Star } from "lucide-react";
 
 const ReviewsSection = ({
