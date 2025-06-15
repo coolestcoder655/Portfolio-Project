@@ -1,17 +1,15 @@
-import { ChevronDown, Trophy, Code, Users, Zap, Rocket } from "lucide-react";
+import { ChevronDown, Trophy, Code, Rocket } from "lucide-react";
 
 interface HeroSectionProps {
   isDarkMode: boolean;
   scrollToSection: (sectionId: string) => void;
   textClasses: string;
-  cardClasses: string;
 }
 
 const HeroSection = ({
   isDarkMode,
   scrollToSection,
   textClasses,
-  cardClasses,
 }: HeroSectionProps) => {
   return (
     <section

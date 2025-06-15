@@ -1,16 +1,9 @@
 interface FooterProps {
   isDarkMode: boolean;
-  scrollToSection: (sectionId: string) => void;
   textClasses: string;
-  cardClasses: string;
 }
 
-const Footer = ({
-  isDarkMode,
-  scrollToSection,
-  textClasses,
-  cardClasses,
-}: FooterProps) => {
+const Footer = ({ isDarkMode, textClasses }: FooterProps) => {
   return (
     <footer
       className={`py-12 ${

@@ -2,14 +2,12 @@ import { Award, Star, Users } from "lucide-react";
 
 interface LeadershipSectionProps {
   isDarkMode: boolean;
-  scrollToSection: (sectionId: string) => void;
   textClasses: string;
   cardClasses: string;
 }
 
 const LeadershipSection = ({
   isDarkMode,
-  scrollToSection,
   textClasses,
   cardClasses,
 }: LeadershipSectionProps) => {

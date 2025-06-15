@@ -2,14 +2,12 @@ import { Rocket, Zap } from "lucide-react";
 
 interface EntrepreneurshipSectionProps {
   isDarkMode: boolean;
-  scrollToSection: (sectionId: string) => void;
   textClasses: string;
   cardClasses: string;
 }
 
 const EntrepreneurshipSection = ({
   isDarkMode,
-  scrollToSection,
   textClasses,
   cardClasses,
 }: EntrepreneurshipSectionProps) => {

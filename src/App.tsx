@@ -203,21 +203,14 @@ const App = () => {
         isDarkMode={isDarkMode}
         scrollToSection={scrollToSection}
         textClasses={textClasses}
-        cardClasses={cardClasses}
       />
 
       {/* About Section */}
-      <AboutSection
-        isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
-        textClasses={textClasses}
-        cardClasses={cardClasses}
-      />
+      <AboutSection textClasses={textClasses} cardClasses={cardClasses} />
 
       {/* Academic Section */}
       <AcademicSection
         isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
         textClasses={textClasses}
         cardClasses={cardClasses}
       />
@@ -225,7 +218,6 @@ const App = () => {
       {/* Tech Section */}
       <TechSection
         isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
         textClasses={textClasses}
         cardClasses={cardClasses}
       />
@@ -233,23 +225,16 @@ const App = () => {
       {/* Leadership Section */}
       <LeadershipSection
         isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
         textClasses={textClasses}
         cardClasses={cardClasses}
       />
 
       {/* Athletics Section */}
-      <AthleticsSection
-        isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
-        textClasses={textClasses}
-        cardClasses={cardClasses}
-      />
+      <AthleticsSection isDarkMode={isDarkMode} textClasses={textClasses} />
 
       {/* Entrepreneurship Section */}
       <EntrepreneurshipSection
         isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
         textClasses={textClasses}
         cardClasses={cardClasses}
       />
@@ -262,12 +247,7 @@ const App = () => {
       />
 
       {/* Footer */}
-      <Footer
-        isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
-        textClasses={textClasses}
-        cardClasses={cardClasses}
-      />
+      <Footer isDarkMode={isDarkMode} textClasses={textClasses} />
     </div>
   );
 };

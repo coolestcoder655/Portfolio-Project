@@ -2,14 +2,12 @@ import { Code, Trophy } from "lucide-react";
 
 interface TechSectionProps {
   isDarkMode: boolean;
-  scrollToSection: (sectionId: string) => void;
   textClasses: string;
   cardClasses: string;
 }
 
 const TechSection = ({
   isDarkMode,
-  scrollToSection,
   textClasses,
   cardClasses,
 }: TechSectionProps) => {

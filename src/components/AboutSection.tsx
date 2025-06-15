@@ -1,18 +1,11 @@
 import { Zap, Users, Rocket } from "lucide-react";
 
 interface AboutSectionProps {
-  isDarkMode: boolean;
-  scrollToSection: (sectionId: string) => void;
   textClasses: string;
   cardClasses: string;
 }
 
-const AboutSection = ({
-  isDarkMode,
-  scrollToSection,
-  textClasses,
-  cardClasses,
-}: AboutSectionProps) => {
+const AboutSection = ({ textClasses, cardClasses }: AboutSectionProps) => {
   return (
     <section id="about" className="relative py-20">
       <div className="max-w-6xl px-6 mx-auto">

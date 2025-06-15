@@ -1,15 +1,11 @@
 interface AthleticsSectionProps {
   isDarkMode: boolean;
-  scrollToSection: (sectionId: string) => void;
   textClasses: string;
-  cardClasses: string;
 }
 
 const AthleticsSection = ({
   isDarkMode,
-  scrollToSection,
   textClasses,
-  cardClasses,
 }: AthleticsSectionProps) => {
   return (
     <section id="athletics" className="py-20">
