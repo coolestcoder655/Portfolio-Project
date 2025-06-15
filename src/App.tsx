@@ -162,14 +162,14 @@ const App = () => {
         <div className="px-6 py-4 mx-auto max-w-7xl">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text animate-pulse" />{" "}
-            <div className="flex items-center space-x-6">
-              <div className="hidden space-x-8 md:flex">
+            <div className="flex items-center space-x-6">              <div className="hidden space-x-8 md:flex">
                 {[
                   "About",
                   "Academic",
                   "Tech",
                   "Leadership",
                   "Athletics",
+                  "Entrepreneurship",
                   "Reviews",
                 ].map((item) => (
                   <button
@@ -661,10 +661,9 @@ const App = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Entrepreneurship Section */}
+      </section>      {/* Entrepreneurship Section */}
       <section
+        id="entrepreneurship"
         className={`py-20 ${
           isDarkMode
             ? "bg-gradient-to-r from-orange-900/20 to-red-900/20"
