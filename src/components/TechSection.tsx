@@ -131,6 +131,9 @@ const TechSection = ({
                   "APIs",
                   "AI Integration",
                   "UI/UX Design",
+                  "Docker Containers",
+                  "Git",
+                  "Virtualization",
                 ].map((skill) => (
                   <span
                     key={skill}
