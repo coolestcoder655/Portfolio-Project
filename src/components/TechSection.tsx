@@ -1,4 +1,4 @@
-import { Code, Trophy } from "lucide-react";
+import { Code, Trophy, Cloud } from "lucide-react";
 
 interface TechSectionProps {
   isDarkMode: boolean;
@@ -34,9 +34,12 @@ const TechSection = ({
           >
             <div className="flex items-center mb-4">
               <Code className="mr-3 text-cyan-400" size={30} />
-              <h3 className="text-2xl font-bold text-cyan-400">
+              <a
+                className="text-2xl font-bold text-cyan-400"
+                href="https://ialfm-attendance.netlify.app/"
+              >
                 Sunday School Attendance App
-              </h3>
+              </a>
               <span className="px-3 py-1 ml-3 text-sm text-green-400 rounded-full bg-green-500/20">
                 In Production
               </span>
@@ -58,7 +61,34 @@ const TechSection = ({
                 )
               )}
             </div>
-          </div>{" "}
+          </div>
+          <div
+            className={`${
+              isDarkMode
+                ? "bg-gradient-to-r from-blue-900/20 to-indigo-900/20"
+                : "bg-gradient-to-r from-blue-100/40 to-indigo-100/40"
+            } backdrop-blur-lg rounded-xl p-8 border ${
+              isDarkMode ? "border-blue-400/30" : "border-blue-300/50"
+            } transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:border-blue-400/70`}
+          >
+            <div className="flex items-center mb-4">
+              <Cloud className="mr-3 text-blue-400" size={30} />
+              <a
+                className="text-2xl font-bold text-blue-400"
+                href="https://sunscope.netlify.app"
+              >
+                Sunscope
+              </a>
+              <span className="px-3 py-1 ml-3 text-sm text-blue-400 rounded-full bg-blue-500/20">
+                Weather Application
+              </span>
+            </div>
+            <p className={`${textClasses} mb-4`}>
+              Developed a weather application that provides real-time weather
+              updates, forecasts, and alerts using WeatherAPI's API, showcasing
+              my skills in API integration and responsive design.
+            </p>
+          </div>
           <div
             className={`${
               isDarkMode
@@ -76,7 +106,7 @@ const TechSection = ({
               <span className="px-3 py-1 ml-3 text-sm text-yellow-400 rounded-full bg-yellow-500/20">
                 Award Winner
               </span>
-            </div>
+            </div>{" "}
             <p className={`${textClasses} mb-4`}>
               Core contributor on an RC Robotics Team, earned the "Plethora of
               Features" award by integrating remarkable range of
