@@ -32,37 +32,55 @@ const LeadershipSection: React.FC<LeadershipSectionProps> = ({ isOutOfCollege = 
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold transition-colors duration-300 text-slate-700 dark:text-slate-200">
+                    <h4 className={`font-semibold transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                       NJHS Inductee
                     </h4>
-                    <p className="transition-colors duration-300 text-slate-600 dark:text-slate-300">
+                    <p className={`transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       National Junior Honor Society Inductee • 2024
                     </p>
-                    <p className="text-sm transition-colors duration-300 text-slate-600 dark:text-slate-400">
+                    <p className={`text-sm transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                    }`}>
                       Recognized for academic excellence, leadership, and
                       community service in middle school
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold transition-colors duration-300 text-slate-700 dark:text-slate-200">
+                    <h4 className={`font-semibold transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                       "Fabulous Falcon" Award
                     </h4>
-                    <p className="transition-colors duration-300 text-slate-600 dark:text-slate-300">
+                    <p className={`transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       Forestwood Middle School • 2024
                     </p>
-                    <p className="text-sm transition-colors duration-300 text-slate-600 dark:text-slate-400">
+                    <p className={`text-sm transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                    }`}>
                       Awarded for outstanding contributions to school community
                       and leadership in student activities
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold transition-colors duration-300 text-slate-700 dark:text-slate-200">
+                    <h4 className={`font-semibold transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                       Peer Learning Mentor
                     </h4>
-                    <p className="transition-colors duration-300 text-slate-600 dark:text-slate-300">
+                    <p className={`transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       Forestwood Middle School • 2023-2024
                     </p>
-                    <p className="text-sm transition-colors duration-300 text-slate-600 dark:text-slate-400">
+                    <p className={`text-sm transition-colors duration-300 ${
+                      theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                    }`}>
                       Mentored 50+ students in computer science fundamentals,
                       fostering a collaborative learning environment
                     </p>
@@ -71,18 +89,26 @@ const LeadershipSection: React.FC<LeadershipSectionProps> = ({ isOutOfCollege = 
               </div>
               {isOutOfCollege && (
                 <div>
-                  <h3 className="mb-6 text-xl font-semibold transition-colors duration-300 text-slate-800 dark:text-white">
+                  <h3 className={`mb-6 text-xl font-semibold transition-colors duration-300 ${
+                    theme === 'dark' ? 'text-white' : 'text-slate-800'
+                  }`}>
                     Community Service
                   </h3>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold transition-colors duration-300 text-slate-700 dark:text-slate-200">
+                      <h4 className={`font-semibold transition-colors duration-300 ${
+                        theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
+                      }`}>
                         Code for Good Volunteer
                       </h4>
-                      <p className="transition-colors duration-300 text-slate-600 dark:text-slate-300">
+                      <p className={`transition-colors duration-300 ${
+                        theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
+                      }`}>
                         2020-Present • 500+ hours
                       </p>
-                      <p className="text-sm transition-colors duration-300 text-slate-600 dark:text-slate-400">
+                      <p className={`text-sm transition-colors duration-300 ${
+                        theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                      }`}>
                         Built digital solutions for 10+ nonprofits, impacting
                         10,000+ lives
                       </p>
