@@ -1,43 +1,53 @@
-interface FooterProps {
-  isDarkMode: boolean;
-  textClasses: string;
+import { Mail, Linkedin, Github } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
+
+interface Props {
+    isOutOfCollege?: boolean;
 }
 
-const Footer = ({ isDarkMode, textClasses }: FooterProps) => {
-  return (
-    <footer
-      className={`py-12 ${
-        isDarkMode ? "bg-black/40" : "bg-gray-900/10"
-      } backdrop-blur-lg border-t ${
-        isDarkMode ? "border-white/10" : "border-gray-300/30"
-      }`}
-    >
-      <div className="max-w-6xl px-6 mx-auto text-center">
-        <div className="mb-8">
-          <h3 className="mb-4 text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text">
-            Let's Connect
-          </h3>
-          <p className={`${textClasses} mb-6`}>
-            Ready to collaborate on exciting projects or discuss opportunities?
-          </p>
-        </div>
-
-        <div className="text-center">
-          <p className={isDarkMode ? "text-gray-400" : "text-gray-600"}>
-            © 2025 Maaz Khokhar. All rights reserved.
-          </p>
-          <a
-            href="mailto:khokharmaaz@gmail.com"
-            className={`block mt-2 underline hover:text-cyan-400 transition-colors duration-200 ${
-              isDarkMode ? "text-gray-300" : "text-gray-700"
-            }`}
-          >
-            khokharmaaz@gmail.com
-          </a>
-        </div>
-      </div>
-    </footer>
-  );
+const Footer: React.FC<Props> = ({ isOutOfCollege }) => {
+    const { theme } = useTheme();
+    
+    return (
+        <section className="mb-16">
+          <div className={`rounded-2xl shadow-xl text-white p-12 text-center transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'bg-gradient-to-r from-indigo-700 to-purple-700' 
+              : 'bg-gradient-to-r from-indigo-600 to-purple-600'
+          }`}>
+            <h2 className="mb-6 text-4xl font-bold">Let's Connect</h2>
+            <p className="mb-8 text-xl opacity-90">
+              Ready to collaborate on something amazing? I'm always excited to
+              discuss new opportunities and innovative projects.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              <a
+                href="khokharmaaz@gmail.com"
+                className="flex items-center gap-2 px-6 py-3 transition-colors rounded-lg bg-white/20 backdrop-blur-sm hover:bg-white/30"
+              >
+                <Mail className="w-5 h-5" />
+                Email Me
+              </a>
+              {isOutOfCollege && (
+                <a
+                  href="https://linkedin.com/MyLinkedinProfile"
+                  className="flex items-center gap-2 px-6 py-3 transition-colors rounded-lg bg-white/20 backdrop-blur-sm hover:bg-white/30"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  LinkedIn
+                </a>
+              )}
+              <a
+                href="https://github.com/coolestcoder655"
+                className="flex items-center gap-2 px-6 py-3 transition-colors rounded-lg bg-white/20 backdrop-blur-sm hover:bg-white/30"
+              >
+                <Github className="w-5 h-5" />
+                GitHub
+              </a>
+            </div>
+          </div>
+        </section>
+    );
 };
 
 export default Footer;

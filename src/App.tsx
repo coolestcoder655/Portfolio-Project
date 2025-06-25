@@ -1,253 +1,277 @@
-import { useState, useEffect } from "react";
+import { useState, type JSX, useEffect } from "react";
+import { Star, X, Sun, Moon } from "lucide-react";
+import { addReview, fetchReviews, type Review } from "./reviewsApi";
+import { useTheme } from "./contexts/ThemeContext";
 import HeroSection from "./components/HeroSection";
-import LeadershipSection from "./components/LeadershipSection";
-import EntrepreneurshipSection from "./components/EntrepreneurshipSection";
-import AcademicSection from "./components/AcademicSection";
+import UniqueSection from "./components/UniqueSection";
+import AcademicSTEMHighlights from "./components/AcademicStemHighlights";
 import TechSection from "./components/TechSection";
-import AboutSection from "./components/AboutSection";
-import AthleticsSection from "./components/AthleticsSection";
-import ReviewsSection from "./components/ReviewsSection";
+import LeadershipSection from "./components/LeadershipSection";
+import AthleticSection from "./components/AthleticsSection";
+import EntrepreuneurshipSection from "./components/EntrepreneurshipSection";
+import ReviewSection from "./components/ReviewSection";
 import Footer from "./components/Footer";
-import { Sun, Moon } from "lucide-react";
 
 const App = () => {
-  const [, setActiveSection] = useState("hero");
-  const [, setIsVisible] = useState({});
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { theme, toggleTheme } = useTheme();
+  const [showModal, setShowModal] = useState(false);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [newReview, setNewReview] = useState<Review>({
+    name: "",
+    rating: -1,
+    position: "",
+    text: "",
+  });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    document.querySelectorAll("section[id]").forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
+    fetchReviews().then(setReviews);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+  const handleAddReview = () => {
+    if (
+      !newReview.name ||
+      newReview.rating < 1 ||
+      newReview.rating > 5 ||
+      !newReview.position ||
+      !newReview.text
+    ) {
+      alert("Please fill out all fields correctly.");
+      return;
+    }
+
+    // Add the new review to the state
+    addReview(newReview)
+      .then(() => {
+        fetchReviews().then(setReviews);
+        alert("Review added successfully!");
+        setNewReview({ name: "", rating: -1, position: "", text: "" });
+        setShowModal(false);
+      })
+      .catch((error) => {
+        console.error("Error adding review:", error);
+        alert("Failed to add review. Please try again later.");
+        setShowModal(false);
+      });
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+  const renderStars = (rating: number): JSX.Element[] => {
+    return Array(5)
+      .fill(0)
+      .map((_, i) => (
+        <Star
+          key={i}
+          className={`w-4 h-4 ${
+            i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+          }`}
+        />
+      ));
   };
-
-  const themeClasses = isDarkMode
-    ? "min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden transition-all duration-1000"
-    : "min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-gray-900 overflow-x-hidden transition-all duration-1000";
-
-  const cardClasses = isDarkMode
-    ? "bg-white/5 backdrop-blur-lg border-white/10"
-    : "bg-white/90 backdrop-blur-lg border-gray-200/60 shadow-xl";
-
-  const navClasses = isDarkMode
-    ? "bg-black/20 backdrop-blur-lg border-white/10"
-    : "bg-white/80 backdrop-blur-lg border-gray-200/30";
-
-  const textClasses = isDarkMode ? "text-gray-300" : "text-gray-700";
 
   return (
-    <div className={themeClasses}>
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes float-delayed {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
-        }
-
-        @keyframes float-particle {
-          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
-          50% { transform: translateY(-30px) translateX(10px); opacity: 0.8; }
-        }
-
-        @keyframes gradient-text {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-
-        @keyframes fade-in-up {
-          0% { opacity: 0; transform: translateY(30px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slide-in-left {
-          0% { opacity: 0; transform: translateX(-50px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slide-in-right {
-          0% { opacity: 0; transform: translateX(50px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slide-in-up {
-          0% { opacity: 0; transform: translateY(50px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounce-subtle {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
-        }
-
-        @keyframes spin-slow {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        .animate-float-delayed {
-          animation: float-delayed 8s ease-in-out infinite;
-        }
-
-        .animate-float-particle {
-          animation: float-particle 4s ease-in-out infinite;
-        }
-
-        .animate-gradient-text {
-          background-size: 200% 200%;
-          animation: gradient-text 3s ease infinite;
-        }
-
-        .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out;
-        }
-
-        .animate-slide-in-left {
-          animation: slide-in-left 0.8s ease-out;
-        }
-
-        .animate-slide-in-right {
-          animation: slide-in-right 0.8s ease-out;
-        }
-
-        .animate-slide-in-up {
-          animation: slide-in-up 0.8s ease-out;
-        }
-
-        .animate-bounce-subtle {
-          animation: bounce-subtle 2s ease-in-out infinite;
-        }
-
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
-        }
-      `}</style>
-      {/* Navigation */}
-      <nav
-        className={`fixed top-0 w-full z-40 ${navClasses} border-b transition-all duration-500`}
+    <div
+      className={`min-h-screen transition-all duration-300 ${
+        theme === "dark"
+          ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+          : "bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"
+      }`}
+    >
+      {/* Theme Toggle Button */}
+      <button
+        onClick={toggleTheme}
+        className={`fixed top-4 right-4 z-50 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border ${
+          theme === "dark"
+            ? "bg-slate-800 text-white border-slate-700 hover:bg-slate-700"
+            : "bg-white text-slate-800 border-slate-200 hover:bg-slate-50"
+        }`}
+        aria-label="Toggle theme"
       >
-        <div className="px-6 py-4 mx-auto max-w-7xl">
-          <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text animate-pulse" />{" "}
-            <div className="flex items-center space-x-6">
-              {" "}
-              <div className="hidden space-x-8 md:flex">
-                {[
-                  "About",
-                  "Academic",
-                  "Tech",
-                  "Leadership",
-                  "Athletics",
-                  "Entrepreneurship",
-                  "Reviews",
-                ].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className={`transition-all duration-300 transform hover:scale-110 ${
-                      isDarkMode
-                        ? "hover:text-cyan-400"
-                        : "hover:text-purple-600 text-gray-800 font-medium"
+        {theme === "light" ? (
+          <Moon className="w-5 h-5" />
+        ) : (
+          <Sun className="w-5 h-5" />
+        )}
+      </button>
+
+      {/* Hero Section */}
+      <HeroSection />
+
+      <div className="max-w-6xl px-6 py-12 mx-auto">
+        <UniqueSection />
+
+        {/* Academic & STEM Highlights */}
+        <AcademicSTEMHighlights />
+
+        {/* Tech, Innovation, and Projects */}
+        <TechSection />
+
+        {/* Leadership, Service, & School */}
+        <LeadershipSection />
+
+        {/* Athletics & Competitions */}
+        <AthleticSection />
+
+        {/* Entrepreneurship and Drive */}
+        <EntrepreuneurshipSection />
+
+        {/* Reviews Section */}
+        <ReviewSection
+          setShowModal={setShowModal}
+          reviews={reviews}
+          renderStars={renderStars}
+        />
+
+        {/* Footer */}
+        <Footer />
+      </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div
+            className={`rounded-2xl shadow-2xl w-full max-w-md ${
+              theme === "dark" ? "bg-slate-800" : "bg-white"
+            }`}
+          >
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3
+                  className={`text-xl font-semibold ${
+                    theme === "dark" ? "text-white" : "text-slate-800"
+                  }`}
+                >
+                  Add a Review
+                </h3>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className={`transition-colors ${
+                    theme === "dark"
+                      ? "text-slate-500 hover:text-slate-300"
+                      : "text-slate-400 hover:text-slate-600"
+                  }`}
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${
+                      theme === "dark" ? "text-slate-300" : "text-slate-700"
                     }`}
                   >
-                    {item}
-                  </button>
-                ))}
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    value={newReview.name}
+                    onChange={(e) =>
+                      setNewReview({ ...newReview, name: e.target.value })
+                    }
+                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${
+                      theme === "dark"
+                        ? "border-slate-600 bg-slate-700 text-white"
+                        : "border-slate-300 bg-white text-slate-900"
+                    }`}
+                    placeholder="Your full name"
+                  />
+                </div>
+                <div>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${
+                      theme === "dark" ? "text-slate-300" : "text-slate-700"
+                    }`}
+                  >
+                    Position
+                  </label>
+                  <input
+                    type="text"
+                    value={newReview.position}
+                    onChange={(e) =>
+                      setNewReview({ ...newReview, position: e.target.value })
+                    }
+                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${
+                      theme === "dark"
+                        ? "border-slate-600 bg-slate-700 text-white"
+                        : "border-slate-300 bg-white text-slate-900"
+                    }`}
+                    placeholder="Your job title and company"
+                  />
+                </div>
+                <div>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${
+                      theme === "dark" ? "text-slate-300" : "text-slate-700"
+                    }`}
+                  >
+                    Rating
+                  </label>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        onClick={() =>
+                          setNewReview({ ...newReview, rating: star })
+                        }
+                        className="text-2xl transition-transform hover:scale-110"
+                      >
+                        <Star
+                          className={`w-6 h-6 ${
+                            star <= newReview.rating
+                              ? "fill-yellow-400 text-yellow-400"
+                              : theme === "dark"
+                              ? "text-gray-600"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${
+                      theme === "dark" ? "text-slate-300" : "text-slate-700"
+                    }`}
+                  >
+                    Review
+                  </label>
+                  <textarea
+                    value={newReview.text}
+                    onChange={(e) =>
+                      setNewReview({ ...newReview, text: e.target.value })
+                    }
+                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${
+                      theme === "dark"
+                        ? "border-slate-600 bg-slate-700 text-white"
+                        : "border-slate-300 bg-white text-slate-900"
+                    }`}
+                    rows={4}
+                    placeholder="Share your experience working with Maaz..."
+                  />
+                </div>
               </div>
-              <button
-                onClick={toggleDarkMode}
-                className={`p-2 rounded-full transition-all duration-300 transform hover:scale-110 ${
-                  isDarkMode
-                    ? "bg-white/10 hover:bg-white/20 text-yellow-400"
-                    : "bg-gray-900/10 hover:bg-gray-900/20 text-purple-600"
-                }`}
-              >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
+              <div className="flex gap-3 mt-6">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className={`flex-1 px-4 py-2 border rounded-lg transition-colors ${
+                    theme === "dark"
+                      ? "border-slate-600 text-slate-300 bg-slate-700 hover:bg-slate-600"
+                      : "border-slate-300 text-slate-700 bg-white hover:bg-slate-50"
+                  }`}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleAddReview}
+                  className="flex-1 px-4 py-2 text-white transition-colors bg-indigo-600 rounded-lg hover:bg-indigo-700"
+                >
+                  Add Review
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </nav>
-
-      {/* Hero Section */}
-      <HeroSection
-        isDarkMode={isDarkMode}
-        scrollToSection={scrollToSection}
-        textClasses={textClasses}
-      />
-
-      {/* About Section */}
-      <AboutSection textClasses={textClasses} cardClasses={cardClasses} />
-
-      {/* Academic Section */}
-      <AcademicSection
-        isDarkMode={isDarkMode}
-        textClasses={textClasses}
-        cardClasses={cardClasses}
-      />
-
-      {/* Tech Section */}
-      <TechSection
-        isDarkMode={isDarkMode}
-        textClasses={textClasses}
-        cardClasses={cardClasses}
-      />
-
-      {/* Leadership Section */}
-      <LeadershipSection
-        isDarkMode={isDarkMode}
-        textClasses={textClasses}
-        cardClasses={cardClasses}
-      />
-
-      {/* Athletics Section */}
-      <AthleticsSection isDarkMode={isDarkMode} textClasses={textClasses} />
-
-      {/* Entrepreneurship Section */}
-      <EntrepreneurshipSection
-        isDarkMode={isDarkMode}
-        textClasses={textClasses}
-        cardClasses={cardClasses}
-      />
-
-      {/* Reviews Section */}
-      <ReviewsSection
-        cardClasses={cardClasses}
-        textClasses={textClasses}
-        isDarkMode={isDarkMode}
-      />
-
-      {/* Footer */}
-      <Footer isDarkMode={isDarkMode} textClasses={textClasses} />
+      )}
     </div>
   );
 };
