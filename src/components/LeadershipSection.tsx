@@ -1,74 +1,88 @@
-import { Award, Star, Users } from "lucide-react";
+import { Users } from 'lucide-react';
 
 interface LeadershipSectionProps {
-  isDarkMode: boolean;
-  textClasses: string;
-  cardClasses: string;
+    isOutOfCollege?: boolean;
 }
 
-const LeadershipSection = ({
-  isDarkMode,
-  textClasses,
-  cardClasses,
-}: LeadershipSectionProps) => {
-  return (
-    <section
-      id="leadership"
-      className={`py-20 ${
-        isDarkMode
-          ? "bg-gradient-to-r from-purple-900/20 to-pink-900/20"
-          : "bg-gradient-to-r from-purple-100/60 to-pink-100/60"
-      }`}
-    >
-      <div className="max-w-6xl px-6 mx-auto">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
-            📚 Leadership, Service & School
-          </h2>
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-purple-400 to-pink-400"></div>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-3">
-          <div
-            className={`${cardClasses} rounded-xl p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300 transform hover:scale-105`}
-          >
-            <Award className="mb-4 text-purple-400" size={40} />
-            <h3 className="mb-3 text-xl font-bold text-purple-400">
-              NJHS Inductee
-            </h3>
-            <p className={textClasses}>
-              National Junior Honor Society recognition for academic excellence,
-              leadership, and community commitment.
-            </p>
+const LeadershipSection: React.FC<LeadershipSectionProps> = ({ isOutOfCollege = false }) => {
+    return (
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <Users className="w-8 h-8 text-indigo-600" />
+            <h2 className="text-3xl font-bold text-slate-800">
+              Leadership & Service
+            </h2>
           </div>
-
-          <div
-            className={`${cardClasses} rounded-xl p-6 border border-white/10 hover:border-pink-400/50 transition-all duration-300 transform hover:scale-105`}
-          >
-            <Users className="mb-4 text-pink-400" size={40} />
-            <h3 className="mb-3 text-xl font-bold text-pink-400">Tutoring</h3>
-            <p className={textClasses}>
-              Volunteered regularly to tutor peers in math, science, and
-              programming—fostering academic growth in others.
-            </p>
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold text-slate-800 mb-6">
+                  Leadership Roles
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-slate-700">
+                      NJHS Inductee
+                    </h4>
+                    <p className="text-slate-600">
+                      National Junior Honor Society Inductee • 2024
+                    </p>
+                    <p className="text-sm text-slate-600">
+                      Recognized for academic excellence, leadership, and
+                      community service in middle school
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-700">
+                      "Fabulous Falcon" Award
+                    </h4>
+                    <p className="text-slate-600">
+                      Forestwood Middle School • 2024
+                    </p>
+                    <p className="text-sm text-slate-600">
+                      Awarded for outstanding contributions to school community
+                      and leadership in student activities
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-700">
+                      Peer Learning Mentor
+                    </h4>
+                    <p className="text-slate-600">
+                      Forestwood Middle School • 2023-2024
+                    </p>
+                    <p className="text-sm text-slate-600">
+                      Mentored 50+ students in computer science fundamentals,
+                      fostering a collaborative learning environment
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {isOutOfCollege && (
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-800 mb-6">
+                    Community Service
+                  </h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-slate-700">
+                        Code for Good Volunteer
+                      </h4>
+                      <p className="text-slate-600">
+                        2020-Present • 500+ hours
+                      </p>
+                      <p className="text-sm text-slate-600">
+                        Built digital solutions for 10+ nonprofits, impacting
+                        10,000+ lives
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-
-          <div
-            className={`${cardClasses} rounded-xl p-6 border border-white/10 hover:border-yellow-400/50 transition-all duration-300 transform hover:scale-105`}
-          >
-            <Star className="mb-4 text-yellow-400" size={40} />
-            <h3 className="mb-3 text-xl font-bold text-yellow-400">
-              Fabulous Falcon Award
-            </h3>
-            <p className={textClasses}>
-              Honored for outstanding school spirit, positive contributions to
-              campus life, and consistent character.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
 export default LeadershipSection;

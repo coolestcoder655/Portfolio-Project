@@ -1,108 +1,41 @@
-import { ChevronDown, Trophy, Code, Rocket } from "lucide-react";
+import { Mail, MapPin, Phone } from 'lucide-react';
 
-interface HeroSectionProps {
-  isDarkMode: boolean;
-  scrollToSection: (sectionId: string) => void;
-  textClasses: string;
-}
-
-const HeroSection = ({
-  isDarkMode,
-  scrollToSection,
-  textClasses,
-}: HeroSectionProps) => {
+const HeroSection: React.FC = () => {
   return (
-    <section
-      id="hero"
-      className="relative flex items-center justify-center min-h-screen overflow-hidden"
-    >
-      <div
-        className={`absolute inset-0 transition-all duration-1000 ${
-          isDarkMode
-            ? "bg-gradient-to-r from-blue-600/20 to-purple-600/20"
-            : "bg-gradient-to-r from-blue-400/10 to-purple-400/10"
-        }`}
-      ></div>
-
-      {/* Animated background particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className={`absolute w-2 h-2 rounded-full animate-float-particle opacity-30 ${
-              isDarkMode ? "bg-cyan-400" : "bg-purple-500"
-            }`}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-4xl px-6 mx-auto text-center">
-        <div className="mb-8">
-          <div className="w-32 h-32 p-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600">
-            <div
-              className={`w-full h-full rounded-full flex items-center justify-center ${
-                isDarkMode ? "bg-slate-900" : "bg-white"
-              }`}
-            >
-              <img
-                src="/mugshot.jpeg"
-                alt="Maaz's Avatar"
-                className="rounded-full"
-              />
+    <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-8">
+            <img
+              src="/mugshot.jpeg"
+              alt="Maaz Khokhar"
+              className="w-48 h-48 rounded-full shadow-lg border-4 border-white"
+            />
+            <div className="text-center lg:text-left">
+              <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                Maaz Khokhar
+              </h1>
+              <p className="text-xl text-slate-300 mb-6">
+                Full-Stack Developer
+              </p>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  khokharmaaz@gmail.com
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  (214) 732-2569
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  Dallas, TX
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <h1 className="mb-6 text-5xl font-bold text-transparent md:text-7xl bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text animate-gradient-text">
-          Hi! I'm Maaz
-        </h1>
-        <p
-          className={`text-xl md:text-2xl mb-8 leading-relaxed animate-fade-in-up ${textClasses}`}
-        >
-          A curious, ambitious, and multidisciplinary student passionate about
-          <span className="text-cyan-500 animate-pulse"> science</span>,
-          <span className="text-purple-500 animate-pulse"> technology</span>,
-          <span className="text-pink-500 animate-pulse"> leadership</span>, and
-          <span className="text-green-500 animate-pulse"> athletics</span>
-        </p>
-        <button
-          onClick={() => scrollToSection("about")}
-          className="px-8 py-4 font-medium text-white transition-all duration-300 transform rounded-full group bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 animate-bounce-subtle"
-        >
-          Explore My Journey
-          <ChevronDown
-            className="inline ml-2 group-hover:animate-bounce"
-            size={20}
-          />
-        </button>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 animate-float">
-        <Code
-          className={isDarkMode ? "text-cyan-400" : "text-purple-600"}
-          size={40}
-        />
-      </div>
-      <div className="absolute top-40 right-20 animate-float-delayed">
-        <Trophy
-          className={isDarkMode ? "text-yellow-400" : "text-orange-500"}
-          size={35}
-        />
-      </div>
-      <div className="absolute bottom-20 left-20 animate-float">
-        <Rocket
-          className={isDarkMode ? "text-pink-400" : "text-purple-500"}
-          size={30}
-        />
-      </div>
-    </section>
-  );
+      </section>
+  )
 };
 
 export default HeroSection;
