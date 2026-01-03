@@ -3,3 +3,10 @@ services:
     build: .
     ports:
       - "80"
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+      rollback_config:
+        parallelism: 1
+        delay: 5s
