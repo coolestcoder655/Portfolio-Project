@@ -26,3 +26,7 @@ dist-ssr
 # Pnpm lock files
 pnpm-lock.yaml
 pnpm-workspace.yaml
+
+# Environment variables
+.env
+.env*
