@@ -1,7 +1,7 @@
 import { db } from './firebase.ts';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 
-export type Review = {
+export interface Review {
   name: string;
   rating: number;
   position: string;
