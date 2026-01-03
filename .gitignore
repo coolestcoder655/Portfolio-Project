@@ -29,4 +29,3 @@ pnpm-workspace.yaml
 
 # Environment variables
 .env
-.env*

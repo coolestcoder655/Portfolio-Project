@@ -1,4 +1,4 @@
-import { db } from '../firebase';
+import { db } from './firebase.ts';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 
 export type Review = {
@@ -8,13 +8,15 @@ export type Review = {
   text: string;
 };
 
-const reviewsCollection = collection(db, 'reviews');
+const reviewsCollection = db ? collection(db, 'reviews') : null;
 
 export async function fetchReviews(): Promise<Review[]> {
+  if (!reviewsCollection) return [];
   const snapshot = await getDocs(reviewsCollection);
   return snapshot.docs.map(doc => doc.data() as Review);
 }
 
 export async function addReview(review: Review): Promise<void> {
+  if (!reviewsCollection) throw new Error('Firestore is not configured (missing Vite Firebase env vars).');
   await addDoc(reviewsCollection, review);
 }
