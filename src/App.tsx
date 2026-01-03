@@ -97,16 +97,16 @@ const App = () => {
   return (
     <div
       className={`min-h-screen transition-all duration-300 ${theme === "dark"
-          ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-          : "bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"
+        ? "bg-linear-to-br from-slate-900 via-slate-800 to-slate-900"
+        : "bg-linear-to-br from-slate-50 via-blue-50 to-indigo-100"
         }`}
     >
       {/* Theme Toggle Button */}
       <button
         onClick={toggleTheme}
         className={`fixed top-4 right-4 z-50 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border ${theme === "dark"
-            ? "bg-slate-800 text-white border-slate-700 hover:bg-slate-700"
-            : "bg-white text-slate-800 border-slate-200 hover:bg-slate-50"
+          ? "bg-slate-800 text-white border-slate-700 hover:bg-slate-700"
+          : "bg-white text-slate-800 border-slate-200 hover:bg-slate-50"
           }`}
         aria-label="Toggle theme"
       >
@@ -167,8 +167,8 @@ const App = () => {
                 <button
                   onClick={() => setShowModal(false)}
                   className={`transition-colors ${theme === "dark"
-                      ? "text-slate-500 hover:text-slate-300"
-                      : "text-slate-400 hover:text-slate-600"
+                    ? "text-slate-500 hover:text-slate-300"
+                    : "text-slate-400 hover:text-slate-600"
                     }`}
                 >
                   <X className="w-6 h-6" />
@@ -189,8 +189,8 @@ const App = () => {
                       setNewReview({ ...newReview, name: e.target.value })
                     }
                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${theme === "dark"
-                        ? "border-slate-600 bg-slate-700 text-white"
-                        : "border-slate-300 bg-white text-slate-900"
+                      ? "border-slate-600 bg-slate-700 text-white"
+                      : "border-slate-300 bg-white text-slate-900"
                       }`}
                     placeholder="Your full name"
                   />
@@ -209,8 +209,8 @@ const App = () => {
                       setNewReview({ ...newReview, position: e.target.value })
                     }
                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${theme === "dark"
-                        ? "border-slate-600 bg-slate-700 text-white"
-                        : "border-slate-300 bg-white text-slate-900"
+                      ? "border-slate-600 bg-slate-700 text-white"
+                      : "border-slate-300 bg-white text-slate-900"
                       }`}
                     placeholder="Your job title and company"
                   />
@@ -233,10 +233,10 @@ const App = () => {
                       >
                         <Star
                           className={`w-6 h-6 ${star <= newReview.rating
-                              ? "fill-yellow-400 text-yellow-400"
-                              : theme === "dark"
-                                ? "text-gray-600"
-                                : "text-gray-300"
+                            ? "fill-yellow-400 text-yellow-400"
+                            : theme === "dark"
+                              ? "text-gray-600"
+                              : "text-gray-300"
                             }`}
                         />
                       </button>
@@ -256,8 +256,8 @@ const App = () => {
                       setNewReview({ ...newReview, text: e.target.value })
                     }
                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${theme === "dark"
-                        ? "border-slate-600 bg-slate-700 text-white"
-                        : "border-slate-300 bg-white text-slate-900"
+                      ? "border-slate-600 bg-slate-700 text-white"
+                      : "border-slate-300 bg-white text-slate-900"
                       }`}
                     rows={4}
                     placeholder="Share your experience working with Maaz..."
@@ -268,8 +268,8 @@ const App = () => {
                 <button
                   onClick={() => setShowModal(false)}
                   className={`flex-1 px-4 py-2 border rounded-lg transition-colors ${theme === "dark"
-                      ? "border-slate-600 text-slate-300 bg-slate-700 hover:bg-slate-600"
-                      : "border-slate-300 text-slate-700 bg-white hover:bg-slate-50"
+                    ? "border-slate-600 text-slate-300 bg-slate-700 hover:bg-slate-600"
+                    : "border-slate-300 text-slate-700 bg-white hover:bg-slate-50"
                     }`}
                 >
                   Cancel
